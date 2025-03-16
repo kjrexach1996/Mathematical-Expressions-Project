@@ -23,5 +23,8 @@
     <ClInclude Include="InfixToPostfixConverter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="PostFixEvaluator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
