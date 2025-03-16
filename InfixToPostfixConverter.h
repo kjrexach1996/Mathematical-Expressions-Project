@@ -116,7 +116,7 @@ public:
 		//After processing infix, while the stack is still not empty
 		while (!st.empty())
 		{
-			//Checks to see if ')' was processed in infix to pair with ')'; displays error message if not
+			//Checks to see if ')' was processed in infix to pair with '('; displays error message if not
 			if (st.top() == '(')
 				throw runtime_error("No closing parentheses ')' found for '('");
 
