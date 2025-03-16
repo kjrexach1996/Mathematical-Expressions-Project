@@ -146,7 +146,7 @@ public:
 				return false;
 		}
 
-		//Accounts for '(' and ')'; these will not precede infix operators and be added to the postfix expression
+		//Accounts for '(' and ')'; these will not precede infix operators and not be added to the postfix expression
 		if ((infix == '+' || infix == '-' || infix == '*' || infix == '/') && (stack == '(' || stack == ')') || isspace(stack))
 			return false;
 	}
