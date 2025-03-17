@@ -57,6 +57,12 @@ public:
 				if (infixExpr[0] == a || infixExpr[infixExpr.size() - 1] == a)
 					throw runtime_error("Improper placement of operator in infix expression");
 
+				//Checks to see if two operators are placed next to each other in infix; will display error message
+				//if two operators are seen next to each other
+				if ((infixExpr[index + 1] == '+' || infixExpr[index + 1] == '-' || infixExpr[index + 1] == '*' || infixExpr[index + 1] == '/')
+					|| (infixExpr[index - 1] == '+' || infixExpr[index - 1] == '-' || infixExpr[index - 1] == '*' || infixExpr[index - 1] == '/'))
+					throw runtime_error("Improper placement of operator in infix expression");
+
 				//While the list is not empty and the operator on the stack precedes the current operator
 				while (!st.empty() && precedes(a, st.top()))
 				{
