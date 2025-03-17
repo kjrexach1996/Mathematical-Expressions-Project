@@ -19,7 +19,12 @@ private:
 	double postResult;
 
 public:
-
+	// Preconditions: Access to the member variables postfix and postResult are required to evaluate expression and store result;
+	// proper formatting of the expression is necessary; the function must be able to tokenize every individual part of the string
+	// to separate it as an individual token to be processed as an integer or operator; any improper syntax or invalid tokens will
+	// result in an error message; any integers encountered must be converted from strings to doubles to perform operations.
+	// Postconditions: The function will take the result of the expression and store it in the member variable postResult. 
+	// Should any errors arise, an error message will be displayed, and evaluation for the current expression will end.
 	void evalPostfix()
 	{
 		//Stack to store operands
@@ -30,7 +35,7 @@ public:
 
 		string token;
 
-		//While tokens can be created in the expression
+		//While tokens can be created from the expression
 		while (ss >> token)
 		{
 			//The first character of the token is an integer. If the expression follows proper formatting rules,
@@ -90,22 +95,29 @@ public:
 		postResult = st.top();
 	}
 
-	
+	//Preconditions: Function must take in a string; postfix member variable must be accessible.
+	//Postconditions: postfix member variable will be updated with the provided postfix expression.
 	void setPostfix(string expr)
 	{
 		postfix = expr;
 	}
 
-	string getPostfix() const
+	//Preconditions: postfix must be accessible and must be a string.
+	//Postconditions: The function will return the value stored in postfix member variable.
+	string getPostfix() 
 	{
 		return postfix;
 	}
 
-	double getResult() const
+	//Preconditions: postResult must be accessible and must be a double.
+	//Postconditions: The function will return the value stored in postResult.
+	double getResult() 
 	{
 		return postResult;
 	}
 
+	//Preconditions: Function must accept a string; postfix member variable must be accessible to store string
+	//Postconditions: PostFixEvaluator object is created
 	PostFixEvaluator(string postfix = "2 2 +", double postResult = 4)
 		: postfix(postfix), postResult(postResult) {}
 };
