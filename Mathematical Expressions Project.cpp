@@ -34,7 +34,6 @@ int main()
     while (getline(input, postfix))
     {
         try {
-
             myExpression.setPostfix(postfix);
             cout << "Current postfix expression: " << myExpression.getPostfix() << endl;
             myExpression.evalPostfix();
