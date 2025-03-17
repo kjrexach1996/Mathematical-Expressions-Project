@@ -20,7 +20,15 @@ private:
 	//Can only be updated infix expression conversion
 	string postfixExpr; 
 public:
-	//Function used to convert infix expression to postfix
+	// Preconditions: Access to the member variables infixExpr and postfixExpr are required; 
+	// to correctly convert and format the postfix expression, a properly formatted infix expression
+	// should be used; this involves correct use and order of parentheses, integers, and operators. 
+	// Correct precedence rules between operators applies. The state of the stack used when storing 
+	// characters from the expression should be monitored properly to prevent errors.
+	// Postconditions: If no errors have occurred, a postfix expression will be outputted from the 
+	// inputted infix expression. No parentheses should appear in the expression if used in the infix. 
+	// If errors have occurred, the appropriate error message should display, and further conversion of 
+	// the erroneous infix expression will end. 
 	void convertInfixToPostfix()
 	{
 		//Create a stack
@@ -28,9 +36,6 @@ public:
 
 		//Used to store final postfix
 		string postfix;
-
-		//
-		int operand;
 		
 		//Used to track characters in infix expression string
 		int index = 0;
@@ -127,7 +132,11 @@ public:
 		//Final postfix expression is updated
 		postfixExpr = postfix;
 	}
-
+	// Preconditions: The function convertInfixToPostfix must be able to call this function and pass along
+	// the current infix character and the top stack character; access to the stack is necessary. The infix character
+	// passed to the stack must be an operator. If comparing an operator and a non-operator, the function must return false.
+	// Postconditions: The function will return true if the top stack character has a higher or equal precedence to the infix value.
+	// If the infix value is of lower priority, or if the top stack character is a non-operator, the function returns false.
 	bool precedes(char infix, char stack)
 	{
 		//Accounts for low-order operator precedence
@@ -138,7 +147,7 @@ public:
 		}
 
 		//Accounts for high-order operator precedence
-		if (infix == '*' || infix == '/')
+		else if (infix == '*' || infix == '/')
 		{
 			if (stack == '*' || stack == '/')
 				return true;
@@ -147,22 +156,28 @@ public:
 		}
 
 		//Accounts for '(' and ')'; these will not precede infix operators and not be added to the postfix expression
-		if ((infix == '+' || infix == '-' || infix == '*' || infix == '/') && (stack == '(' || stack == ')') || isspace(stack))
+		if ((infix == '+' || infix == '-' || infix == '*' || infix == '/') && (stack == '(' || stack == ')'))
 			return false;
 	}
 
+	// Preconditions: Function must take in a string; infixExpr must be accessible.
+	// Postconditions: infixExpr will be updated with infix expression.
 	void setInfix(string newExpression)
 	{
 		//Updates infix expressions
 		infixExpr = newExpression;
 	}
 
+	// Preconditions: infixExpr must be accessible and must be a string.
+	// Postconditions: The function will return the value stored in infixExpr.
 	string getInfix()
 	{
 		//Returns infix expression
 		return infixExpr;
 	}
 
+	// Preconditions: postfixExpr must be accessible and must be a string.
+	// Postconditions: The function will return the value stored in postfixExpr.
 	string getPostfix()
 	{
 		//Returns postfix expression 
@@ -170,6 +185,8 @@ public:
 	}
 
 	//Default and user-defined constructor
+	// Preconditions: Function must accept a string; infixExpr must be accessible to store string
+	// Postconditions: InfixToPostfixConverter object is created
 	InfixToPostfixConverter(string infixExpr = "2 + 2")
 		: infixExpr(infixExpr) {}
 };

@@ -7,6 +7,8 @@
 #include <iostream>
 #include "InfixToPostfixConverter.h"
 
+using namespace std;
+
 int main()
 {
     //Testing for default constructor; default parameters set to "2+2"
